@@ -15,11 +15,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/NetLib/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="297">
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -27,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/NetLib/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="111" column="25" selection-start-line="111" selection-start-column="25" selection-end-line="111" selection-end-column="25" />
+            <state relative-caret-position="-266">
+              <caret line="69" column="21" lean-forward="true" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#ClientAccepter#0" />
@@ -45,22 +48,23 @@
                 <element signature="method#stopAcceptingClients#0;class#Server#0" />
                 <element signature="method#startAcceptingClients#0;class#Server#0" />
                 <element signature="method#doToEachClient#0;class#Server#0" />
+                <element signature="method#sendToAll#0;class#Server#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/NetLib/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="617">
-              <caret line="32" column="79" selection-start-line="32" selection-start-column="79" selection-end-line="32" selection-end-column="79" />
+            <state relative-caret-position="324">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#301#302#0" expanded="true" />
                 <element signature="e#338#339#0" expanded="true" />
-                <element signature="e#748#749#0" expanded="true" />
-                <element signature="e#783#784#0" expanded="true" />
+                <element signature="method#Message#2;class#Message#0" />
+                <element signature="method#getSerialized#0;class#Message#0" />
               </folding>
             </state>
           </provider>
@@ -69,11 +73,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/ByteCaster.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+            <state relative-caret-position="405">
+              <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
               <folding>
                 <element signature="method#writeValueAsBytes#0;class#ByteCaster#0" />
-                <element signature="method#getObjectFor#0;class#ByteCaster#0" />
                 <element signature="method#printDataOf#0;class#ByteCaster#0" />
               </folding>
             </state>
@@ -83,11 +86,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/NetLib/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="539">
+              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
               <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#Client#0;class#Client#0" />
                 <element signature="method#disconnect#0;class#Client#0" />
                 <element signature="method#startAction#0;class#Client#0" />
+                <element signature="method#send#0;class#Client#0" />
+                <element signature="method#waitForNextMessage#0;class#Client#0" />
+                <element signature="method#readCurrentBytes#0;class#Client#0" />
               </folding>
             </state>
           </provider>
@@ -109,12 +117,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/com/NetLib/SocketIUtil.java" />
-        <option value="$PROJECT_DIR$/src/com/NetLib/Server.java" />
-        <option value="$PROJECT_DIR$/src/com/NetLib/Client.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/ByteCaster.java" />
-        <option value="$PROJECT_DIR$/src/com/NetLib/Main.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/util/ByteCaster.java" />
+        <option value="$PROJECT_DIR$/src/com/NetLib/Server.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/Message.java" />
+        <option value="$PROJECT_DIR$/src/com/NetLib/Client.java" />
+        <option value="$PROJECT_DIR$/src/com/NetLib/Main.java" />
       </list>
     </option>
   </component>
@@ -146,6 +154,13 @@
               <item name="JavaNetworkLibrary" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="NetLib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaNetworkLibrary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaNetworkLibrary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="NetLib" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -223,7 +238,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.10725894" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30119178" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -246,26 +261,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NetLib/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="method#disconnect#0;class#Client#0" />
-            <element signature="method#startAction#0;class#Client#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/NetLib/ByteCaster.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/io/InputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
-        </state>
-      </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/io/BufferedInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -278,10 +275,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/io/ObjectOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="1184" column="26" selection-start-line="1184" selection-start-column="26" selection-end-line="1184" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/net/Socket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="941" column="24" selection-start-line="941" selection-start-column="24" selection-end-line="941" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/io/InputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="624" column="17" lean-forward="true" selection-start-line="624" selection-start-column="17" selection-end-line="624" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/NetLib/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="111" column="25" selection-start-line="111" selection-start-column="25" selection-end-line="111" selection-end-column="25" />
+        <state relative-caret-position="-266">
+          <caret line="69" column="21" lean-forward="true" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#ClientAccepter#0" />
@@ -298,46 +316,65 @@
             <element signature="method#stopAcceptingClients#0;class#Server#0" />
             <element signature="method#startAcceptingClients#0;class#Server#0" />
             <element signature="method#doToEachClient#0;class#Server#0" />
+            <element signature="method#sendToAll#0;class#Server#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/io/ObjectOutputStream.java">
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="1184" column="26" selection-start-line="1184" selection-start-column="26" selection-end-line="1184" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NetLib/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/ByteCaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+        <state relative-caret-position="539">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
           <folding>
-            <element signature="method#writeValueAsBytes#0;class#ByteCaster#0" />
-            <element signature="method#getObjectFor#0;class#ByteCaster#0" />
-            <element signature="method#printDataOf#0;class#ByteCaster#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#Client#0;class#Client#0" />
+            <element signature="method#disconnect#0;class#Client#0" />
+            <element signature="method#startAction#0;class#Client#0" />
+            <element signature="method#send#0;class#Client#0" />
+            <element signature="method#waitForNextMessage#0;class#Client#0" />
+            <element signature="method#readCurrentBytes#0;class#Client#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/NetLib/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="32" column="79" selection-start-line="32" selection-start-column="79" selection-end-line="32" selection-end-column="79" />
+        <state relative-caret-position="324">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#301#302#0" expanded="true" />
             <element signature="e#338#339#0" expanded="true" />
-            <element signature="e#748#749#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
+            <element signature="method#Message#2;class#Message#0" />
+            <element signature="method#getSerialized#0;class#Message#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/io/ObjectInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-899">
+          <caret line="1541" column="19" selection-start-line="1541" selection-start-column="19" selection-end-line="1541" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/ByteCaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+          <folding>
+            <element signature="method#writeValueAsBytes#0;class#ByteCaster#0" />
+            <element signature="method#printDataOf#0;class#ByteCaster#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

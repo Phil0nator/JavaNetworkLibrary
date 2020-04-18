@@ -2,6 +2,8 @@ package com.NetLib;
 
 import java.io.Serializable;
 
+import static java.lang.System.exit;
+
 
 public class Main {
 

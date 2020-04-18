@@ -69,15 +69,15 @@ interface ServerAction{
 
 public class Server {
 
-    Client[] clients;
-    ServerSocket serverSocket;
-    Client newestClient;
-    private int clientCount = 0;
-    private ClientAccepter ca = null;
+    volatile Client[] clients;
+    volatile ServerSocket serverSocket;
+    volatile Client newestClient;
+    volatile private int clientCount = 0;
+    volatile private ClientAccepter ca = null;
 
 
-    private ServerAction onNewClient;
-    private ServerAction perClientAction;
+    volatile private ServerAction onNewClient;
+    volatile private ServerAction perClientAction;
 
 
     Server(int port, int maxClients){
@@ -148,6 +148,12 @@ public class Server {
         perClientAction = a;
         for(Client c:clients){
             c.startAction(new PerClientActionable(this, c, a));
+        }
+    }
+
+    void sendToAll(Message m){
+        for(Client c: clients){
+            c.send(m);
         }
     }
 
