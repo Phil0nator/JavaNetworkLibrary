@@ -15,7 +15,7 @@ public class Message {
     /**
      * @see ByteCaster
      */
-    ByteCaster c = new ByteCaster();
+    private ByteCaster c = new ByteCaster();
 
     /**
      * Create a message with a serializable object
@@ -74,6 +74,10 @@ public class Message {
         return new byte[0];
     }
 
+    /**
+     * Debugging method for printing the serialized contents of the message
+     * @see ByteCaster#printDataOf(Object)
+     */
     private synchronized void printSerialized(){
         c.printDataOf(this);
     }

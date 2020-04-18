@@ -91,14 +91,30 @@ interface ServerAction{
  * The container and handler for multiple clients
  */
 public class Server {
-
+    /**
+     * Currently connected clients
+     */
     volatile Client[] clients;
+    /**
+     * @see ServerSocket
+     */
     volatile ServerSocket serverSocket;
+    /**
+     * The newest client to be added
+     */
     volatile Client newestClient;
+
     volatile private int clientCount = 0;
+    /**
+     * @see ClientAccepter
+     */
     volatile private ClientAccepter ca = null;
 
-
+    /**
+     * Callbacks:
+     * @see ServerAction
+     * @see FunctionalInterface
+     */
     volatile private ServerAction onNewClient;
     volatile private ServerAction perClientAction;
 
