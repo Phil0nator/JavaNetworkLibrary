@@ -1,6 +1,7 @@
 package com.NetLib;
 
 import com.NetLib.util.EncryptionHandler;
+import com.NetLib.util.HardcodedKeyPair;
 
 import javax.net.ServerSocketFactory;
 import javax.net.ssl.SSLServerSocket;
@@ -168,36 +169,12 @@ public class Server {
 
     /**
      * Secondary Constructor for encryption
-     *
+     * @param port port to bind to
+     * @param maxClients maximum number of clients to connect at one time
      */
-    Server(int port, int maxClients, EncryptionLevel level){
-        System.setProperty("jdk.tls.server.protocols", "TLSv1.2");
-        clients = new Client[maxClients];
-        try {
+    Server(int port, int maxClients, HardcodedKeyPair hardcoded){
+        this(port,maxClients);
 
-            serverSocket = SSLServerSocketFactory.getDefault().createServerSocket(port);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        int levelNumber = 0;
-        switch (level){
-            case RSA_128:
-                levelNumber = 128;
-                break;
-            case RSA_256:
-                levelNumber = 256;
-                break;
-            case RSA_512:
-                levelNumber = 512;
-                break;
-            case RSA_1024:
-                levelNumber = 1024;
-            default:
-                levelNumber = 1024;
-                break;
-        }
-        encryptionHandler = new EncryptionHandler(levelNumber);
         doesEncrypt=true;
     }
 

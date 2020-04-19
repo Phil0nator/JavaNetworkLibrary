@@ -7,11 +7,13 @@ import java.io.*;
 /**
  * Container class for messages, serialization and deserialization
  */
-public class Message {
-
-    public static final int STANDARD_MESSAGE_SIZE = 4096*2048;
+public final class Message {
 
 
+
+    /**
+     * Message Contents (could be of any type)
+     */
     private volatile Object obj;
 
     /**

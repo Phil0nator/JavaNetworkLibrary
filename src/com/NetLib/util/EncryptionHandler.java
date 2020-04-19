@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -37,12 +38,12 @@ public class EncryptionHandler {
             this.keyPair = keyGenerator.generateKeyPair();
             this.privateKey = keyPair.getPrivate();
             this.publicKey = keyPair.getPublic();
-
-
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
+
 
     synchronized public byte[] encrypt(Message msg){
         try {
