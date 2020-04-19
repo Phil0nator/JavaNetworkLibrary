@@ -1,10 +1,8 @@
 package com.NetLib;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
+import java.security.PublicKey;
 import java.time.Instant;
 
 public class Client {
@@ -12,11 +10,14 @@ public class Client {
     public volatile Socket s;
     public volatile Server parent;
 
+
+    public volatile PublicKey publicKey;
+
     /**
      * In and Out fields are streams of data between server and client or client and client
      */
-    private volatile OutputStream out;
-    private volatile InputStream in;
+    private volatile DataOutputStream out;
+    private volatile DataInputStream in;
 
     /**
      * The threaded action being done to the client
@@ -24,27 +25,52 @@ public class Client {
      * @see ServerAction
      */
     volatile private PerClientActionable thread;
+    volatile private Thread t;
+
+    /**
+     * Create Client object for servers
+     * @param p parent
+     * @param s Socket
+     */
     Client(Server p, Socket s){
         this.s=s;
         parent = p;
         try {
-            out = s.getOutputStream();
-            in = s.getInputStream();
+            out = new DataOutputStream(s.getOutputStream());
+            in = new DataInputStream(s.getInputStream());
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public void disconnect(){
-        thread.kill();
-        try{
+
+    public Client(String ip, int port){
+        try {
+            s = new Socket(ip, port);
+            out = new DataOutputStream(s.getOutputStream());
+            in = new DataInputStream(s.getInputStream());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Used for clients attached to a server object
+     */
+    void disconnect(){
+        parent.remove(this);
+    }
+
+    /**
+     * Used for clients not attached to a server object
+     */
+    public void close(){
+        try {
             s.close();
         }catch (Exception e){
             e.printStackTrace();
         }
-        parent.remove(this);
     }
-
 
     /**
      * Kill the ServerAction running on this client
@@ -54,6 +80,8 @@ public class Client {
      */
     public void killThread(){
         thread.kill();
+
+
     }
 
     /**
@@ -64,7 +92,7 @@ public class Client {
      * @param perClientAction
      */
     public void startAction(PerClientActionable perClientAction) {
-        Thread t = new Thread(perClientAction);
+        t = new Thread(perClientAction);
         thread = perClientAction;
         t.start();
     }
@@ -77,10 +105,23 @@ public class Client {
     public boolean send(Message m){
 
         try {
+
             byte[] data = m.getSerialized();
+            //if(parent.doesEncrypt){
+            //    data = parent.encryptionHandler.encrypt(m);
+            //}else{
+            //    data = m.getSerialized();
+            //}
+
+            out.writeInt(data.length);
             out.write(data);
+            out.flush();
         }catch (Exception e){
-            e.printStackTrace();
+            if(parent!=null) {
+                disconnect();
+            }else{
+                close();
+            }
         }
 
         return false;
@@ -88,22 +129,39 @@ public class Client {
 
     /**
      * Blocking method to get the next valid message coming through the socket
-     * @param timeout the maximum time to wait in milliseconds
      * @return a new Message object
      */
-    public Message getNextMessage(long timeout){
-        long start = Instant.now().toEpochMilli();
-        while((Instant.now().toEpochMilli()-start < timeout)){
-            try{
-                Message msg = new Message(in.readAllBytes());
-                Object test = msg.getObject();
-                return msg;
-            }catch (Exception e){
+    public Message getNextMessage(){
 
+
+        try{
+            int size = in.readInt();
+            if(size<=0)return null;
+            Message msg = new Message(in.readNBytes(size));
+            return msg;
+        }catch (Exception e){
+
+            if(parent!=null) {
+                disconnect();
+            }else{
+                close();
+                return null;
             }
         }
+
         return null;
     }
+
+    /**
+     * Used to ensure that a message is not null, and will block until a valid message is recieved
+     * @return a not-null Message object
+     */
+    public Message blockUntilNextMessage(){
+
+        return getNextMessage();
+
+    }
+
 
     /**
      * Read whatever bytes are currently in the input stream buffer
@@ -117,6 +175,8 @@ public class Client {
         }
         return new byte[0];
     }
+
+
 
 
 }

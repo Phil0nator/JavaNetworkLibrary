@@ -9,6 +9,8 @@ import java.io.*;
  */
 public class Message {
 
+    public static final int STANDARD_MESSAGE_SIZE = 4096*2048;
+
 
     private volatile Object obj;
 
@@ -22,7 +24,7 @@ public class Message {
      * @param o a serializable object
      * @see Serializable
      */
-    Message(Serializable o){
+    public Message(Serializable o){
         obj=o;
     }
 
@@ -31,7 +33,7 @@ public class Message {
      * @param b bytes of either a String object or a serializable object
      * @see Serializable
      */
-    Message(byte[] b){
+    public Message(byte[] b){
         obj = c.getObjectFor(b);
     }
 
@@ -39,7 +41,7 @@ public class Message {
      * Create a message based on a String object
      * @param s string
      */
-    Message(String s){
+    public Message(String s){
 
         obj = s;
 
@@ -49,7 +51,7 @@ public class Message {
      * Can be null.
      * @return whatever the Object field of the message currently holds
      */
-    Object getObject(){
+    public Object getObject(){
         return obj;
     }
 
@@ -59,7 +61,7 @@ public class Message {
      * @see Serializable
      * @throws NotSerializableException
      */
-    byte[] getSerialized() throws NotSerializableException{
+    public byte[] getSerialized() throws NotSerializableException{
         if(obj instanceof Serializable) {
             try {
                 return c.writeValueAsBytes((Serializable) obj);
@@ -78,7 +80,7 @@ public class Message {
      * Debugging method for printing the serialized contents of the message
      * @see ByteCaster#printDataOf(Object)
      */
-    private synchronized void printSerialized(){
+    public synchronized void printSerialized(){
         c.printDataOf(this);
     }
 }

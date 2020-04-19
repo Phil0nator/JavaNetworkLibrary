@@ -1,11 +1,14 @@
 package com.NetLib;
 
+import com.NetLib.util.EncryptionHandler;
+
 import java.lang.ref.Cleaner;
 import java.net.ServerSocket;
 
 /**
  * ClientAccepter implements runnable to run in its own thread, and accept new clients
  * @see Server
+ * @see Runnable
  */
 class ClientAccepter implements Runnable{
     /**
@@ -50,19 +53,24 @@ class ClientAccepter implements Runnable{
  * the ServerAction a user has defined will run. This is what runs for each
  * Client of the server to handle incoming and outgoing information.
  * @see ServerAction
+ * @see Runnable
  */
 class PerClientActionable implements Runnable{
     Server server;
     Client client;
     ServerAction action;
-    private boolean end = false;
+    public boolean end = false;
     PerClientActionable(Server s, Client c, ServerAction a){
         server=s;
         client=c;
         action=a;
     }
 
-    public void kill(){end=true;}
+    public synchronized void kill(){
+
+        end=true;
+
+    }
 
     public void run(){
 
@@ -71,6 +79,8 @@ class PerClientActionable implements Runnable{
                 action.run(client);
             }catch (Exception e){
                 e.printStackTrace();
+                client.disconnect();
+                kill();
             }
         }
 
@@ -85,6 +95,14 @@ class PerClientActionable implements Runnable{
 interface ServerAction{
     public void run(Client c);
 }
+
+
+enum EncryptionLevel{
+
+    RSA_1024, RSA_64, RSA_128, RSA_256, RSA_512
+
+}
+
 
 
 /**
@@ -117,7 +135,15 @@ public class Server {
      */
     volatile private ServerAction onNewClient;
     volatile private ServerAction perClientAction;
+    volatile private ServerAction onDisconnect;
 
+
+    /**
+     * Asymetric Encryption is done through an EncryptionHandler Object:
+     * @see com.NetLib.util.EncryptionHandler
+     */
+    volatile public EncryptionHandler encryptionHandler;
+    volatile public boolean doesEncrypt = false;
     /**
      * Constructor
      * @param port defines the port to which the server's socket will be bound
@@ -132,7 +158,36 @@ public class Server {
             e.printStackTrace();
         }
 
+
     }
+
+    /**
+     * Secondary Constructor for encryption
+     *
+     */
+    Server(int port, int maxClients, EncryptionLevel level){
+        this(port, maxClients);
+        int levelNumber = 0;
+        switch (level){
+            case RSA_128:
+                levelNumber = 128;
+                break;
+            case RSA_256:
+                levelNumber = 256;
+                break;
+            case RSA_512:
+                levelNumber = 512;
+                break;
+            case RSA_1024:
+                levelNumber = 1024;
+            default:
+                levelNumber = 1024;
+                break;
+        }
+        encryptionHandler = new EncryptionHandler(levelNumber);
+        doesEncrypt=true;
+    }
+
 
     /**
      * Adds a new Client
@@ -161,7 +216,7 @@ public class Server {
      * The client that is will become an unsafe reference
      * @param c a reference to the client to be removed
      */
-    synchronized void remove(Client c){
+    void remove(Client c){
         Client[] newClients = new Client[clients.length];
         int i = 0 ;
         for(Client A: clients){
@@ -171,7 +226,8 @@ public class Server {
             }
         }
         c.killThread();
-        c.disconnect();
+        c.close();
+        onDisconnect.run(c);
         c = null;
         clients=newClients;
     }
@@ -210,6 +266,15 @@ public class Server {
     }
 
     /**
+     * Define a ServerAction (FunctionalInterface) to act on each client that disconnects
+     * @param a FunctionalInterface
+     * @see ServerAction
+     */
+    public void doOnDisconnect(ServerAction a){
+        onDisconnect = a;
+    }
+
+    /**
      * Define a ServerAction (FunctionalInterface) which will act on each client in a seperate thread
      * @param a FunctionalInterface
      * @see ServerAction
@@ -217,7 +282,8 @@ public class Server {
      */
     void doToEachClient(ServerAction a){
         perClientAction = a;
-        for(Client c:clients){
+        for(Client c : clients){
+            if(c!=null)
             c.startAction(new PerClientActionable(this, c, a));
         }
     }
