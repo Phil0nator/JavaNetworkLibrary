@@ -2,7 +2,11 @@ package com.NetLib;
 
 import com.NetLib.util.EncryptionHandler;
 
+import javax.net.ServerSocketFactory;
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
 import java.lang.ref.Cleaner;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 
 /**
@@ -37,6 +41,7 @@ class ClientAccepter implements Runnable{
             while(pause){}
 
             try {
+
                 Client newClient = new Client(S, S.serverSocket.accept());
                 S.pushClient(newClient);
             }catch (Exception e){
@@ -166,7 +171,15 @@ public class Server {
      *
      */
     Server(int port, int maxClients, EncryptionLevel level){
-        this(port, maxClients);
+        System.setProperty("jdk.tls.server.protocols", "TLSv1.2");
+        clients = new Client[maxClients];
+        try {
+
+            serverSocket = SSLServerSocketFactory.getDefault().createServerSocket(port);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         int levelNumber = 0;
         switch (level){
             case RSA_128:

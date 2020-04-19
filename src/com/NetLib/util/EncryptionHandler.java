@@ -15,6 +15,8 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 import javax.crypto.*;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLKeyException;
 
 
 public class EncryptionHandler {
@@ -24,6 +26,8 @@ public class EncryptionHandler {
     private volatile PublicKey publicKey;
     private volatile KeyPair keyPair;
     private volatile KeyPairGenerator keyGenerator;
+
+
 
     public EncryptionHandler(int keySize){
         try {
@@ -43,11 +47,22 @@ public class EncryptionHandler {
     synchronized public byte[] encrypt(Message msg){
         try {
             cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-            return Base64.getEncoder().encode(cipher.doFinal(msg.getSerialized()));
+            return new Message(Base64.getEncoder().encodeToString(cipher.doFinal(msg.getSerialized()))).getSerialized();
         }catch (Exception e){
             e.printStackTrace();
         }
         return new byte[0];
+    }
+
+    synchronized public Message decrypt(Message msg){
+        try {
+            Cipher cipher = Cipher.getInstance("RSA");
+            cipher.init(Cipher.DECRYPT_MODE, privateKey);
+            return new Message(cipher.doFinal(Base64.getDecoder().decode(msg.getSerialized())));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return new Message(0);
     }
 
 

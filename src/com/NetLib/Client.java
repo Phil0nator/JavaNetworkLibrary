@@ -1,5 +1,9 @@
 package com.NetLib;
 
+import javax.net.ServerSocketFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.net.Socket;
 import java.security.PublicKey;
@@ -8,6 +12,7 @@ import java.time.Instant;
 public class Client {
 
     public volatile Socket s;
+    public volatile SSLSocket secureSocket;
     public volatile Server parent;
 
 
@@ -35,6 +40,7 @@ public class Client {
     Client(Server p, Socket s){
         this.s=s;
         parent = p;
+        System.setProperty("jdk.tls.server.protocols", "TLSv1.2");
         try {
             out = new DataOutputStream(s.getOutputStream());
             in = new DataInputStream(s.getInputStream());
@@ -44,9 +50,17 @@ public class Client {
     }
 
 
-    public Client(String ip, int port){
+    public Client(String ip, int port, boolean encrypts){
         try {
-            s = new Socket(ip, port);
+            if(encrypts){
+                System.setProperty("jdk.tls.server.protocols", "TLSv1.2");
+                s = SSLSocketFactory.getDefault().createSocket(ip,port);
+                //SSLSocket stemp = (SSLSocket)s;
+                //stemp.startHandshake();
+
+            }else {
+                s = new Socket(ip, port);
+            }
             out = new DataOutputStream(s.getOutputStream());
             in = new DataInputStream(s.getInputStream());
         }catch(Exception e){
@@ -117,6 +131,7 @@ public class Client {
             out.write(data);
             out.flush();
         }catch (Exception e){
+            e.printStackTrace();
             if(parent!=null) {
                 disconnect();
             }else{
@@ -140,6 +155,7 @@ public class Client {
             Message msg = new Message(in.readNBytes(size));
             return msg;
         }catch (Exception e){
+            e.printStackTrace();
 
             if(parent!=null) {
                 disconnect();
