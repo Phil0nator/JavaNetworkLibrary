@@ -1,0 +1,8 @@
+Client /127.0.0.1:26959 sent message at 2020/04/19 21:49:20 of size 15 bytes
+Client /127.0.0.1:26959 Connected at 2020/04/19 21:49:20
+Client /127.0.0.1:26959 sent message at 2020/04/19 21:49:36 of size 31 bytes
+Client /127.0.0.1:26959 sent message at 2020/04/19 21:49:45 of size 16 bytes
+Client /127.0.0.1:26959 Disconnected at 2020/04/19 21:49:54
+Client /127.0.0.1:27047 sent message at 2020/04/19 22:06:50 of size 15 bytes
+Client /127.0.0.1:27047 Connected at 2020/04/19 22:06:50
+Client /127.0.0.1:27047 sent message at 2020/04/19 22:07:14 of size 48 bytes

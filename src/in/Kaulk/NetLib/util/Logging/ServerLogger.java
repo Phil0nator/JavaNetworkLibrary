@@ -1,12 +1,15 @@
 package in.Kaulk.NetLib.util.Logging;
 
 
+import com.sun.management.OperatingSystemMXBean;
 import in.Kaulk.NetLib.Server;
 import in.Kaulk.NetLib.util.Events.ClientMessageRecievedEvent;
 import in.Kaulk.NetLib.util.Events.ErrorEvent;
 import in.Kaulk.NetLib.util.Events.Event;
+import in.Kaulk.NetLib.util.Events.EventstackOverflowException;
 
 import java.io.*;
+import java.lang.management.ManagementFactory;
 import java.time.Instant;
 
 
@@ -18,6 +21,22 @@ import java.time.Instant;
  * Basic finalized class to handle server logging
  */
 public final class ServerLogger {
+
+    /**
+     * Number of milliseconds between each time the logger logs system info (Only on log level extra_verbose)
+     * @see LoggingMode
+     */
+    private static final int SYSTEM_INFO_DELAY = 10000;
+
+    private static final int MAX_EVENTSTACK_SIZE = 64;
+
+    /**
+     * Operating system information used in logging on log level extra_verbose
+     * @see OperatingSystemMXBean
+     * @see LoggingMode
+     */
+    private OperatingSystemMXBean os = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
+
     /**
      * parent
      */
@@ -74,9 +93,28 @@ public final class ServerLogger {
     public LoggingMode getMode(){return l;}
 
 
-
+    /**
+     * Feed an Event object into the LoggerThread
+     * @param e new event object
+     * @see Event
+     * @see LoggerThread
+     *
+     * Called in:
+     * @see Server#feedLoggingEvent(Event)
+     */
     synchronized public void feedNewActionType(Event e){
         thread.pushEvent(e);
+    }
+
+
+    /**
+     * Get System Info:
+     */
+    private double getSystemLoad(){
+        return os.getSystemLoadAverage();
+    }
+    private double getRamInUse() {
+        return Runtime.getRuntime().freeMemory()-Runtime.getRuntime().totalMemory();
     }
 
 
@@ -89,7 +127,7 @@ public final class ServerLogger {
         /**
          * Event stack
          */
-        private volatile Event[] events = new Event[64];
+        private volatile Event[] events = new Event[MAX_EVENTSTACK_SIZE];
         /**
          * Stack tracer
          */
@@ -99,10 +137,15 @@ public final class ServerLogger {
         /**
          * Adds new event
          * @param e a new event object
+         * @throws EventstackOverflowException when you have exceeded the eventStack limit
          * @see Event
          */
-        synchronized void pushEvent(Event e){
+        synchronized void pushEvent(Event e) throws EventstackOverflowException {
+
             eventCount++;
+            if(eventCount > MAX_EVENTSTACK_SIZE){
+                throw new EventstackOverflowException("You have exceeded the maximum number of events in your server logger");
+            }
             events[eventCount]=e;
 
         }
@@ -170,15 +213,19 @@ public final class ServerLogger {
          * Main loop
          */
         public void run(){
+            long lastSystemInfoDump = Instant.now().toEpochMilli();
             while(true){
-                delay(1000);
-                while(eventCount>0){
 
+
+
+
+                delay(1000); //slow down thread
+                while(eventCount>0){
+                    //main event handling:
                     if(!getIfValid(events[eventCount])){
                         pop();
                         continue;
                     }
-                    System.out.println(eventCount);
                     String content = events[eventCount].message;
 
                     try{
@@ -188,13 +235,27 @@ public final class ServerLogger {
                         e.printStackTrace();
                     }
                 }
+
+                //write system dump
+                if(parent.getMode()==LoggingMode.extra_verbose) {
+                    if (Instant.now().toEpochMilli() - lastSystemInfoDump > SYSTEM_INFO_DELAY) {
+                        lastSystemInfoDump = Instant.now().toEpochMilli();
+                        try {
+                            writer.write("System Info: \n\tApprox. Ram use: " + getRamInUse() + "b\n\tApprox. SystemLoad: " + getSystemLoad() + "%\n");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                //flush buffers:
                 try {
                     writer.flush();
                 }catch (Exception e){
                     e.printStackTrace();
                 }
 
-            }
+            }//end mainloop
         }
     }
 

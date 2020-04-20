@@ -1,4 +1,4 @@
-import com.NetLib.*;
+import in.Kaulk.NetLib.*;
 import in.Kaulk.NetLib.Client;
 import in.Kaulk.NetLib.Message;
 
