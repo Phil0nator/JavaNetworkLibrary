@@ -1,4 +1,4 @@
-[2020.04.18 20:50:35] (Coverage): Failed to load coverage data from file: C:\Users\philo\.IdeaIC2019.1\system\coverage\JavaNetworkLibrary$ClientTest.ic
+[2020.04.18 20:50:35] (Coverage): Failed to load coverage data from file: C:\Users\philo\.IdeaIC2019.1\system\coverage\JavaNetworkLibrary$in.Kaulk.NetLib.examples.ClientTest.ic
 java.io.EOFException
 	at java.io.DataInputStream.readUnsignedByte(DataInputStream.java:290)
 	at com.intellij.rt.coverage.util.CoverageIOUtil.readINT(CoverageIOUtil.java:136)

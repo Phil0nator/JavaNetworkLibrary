@@ -1,12 +1,14 @@
 package in.Kaulk.NetLib;
 
 import in.Kaulk.NetLib.util.Events.ClientMessageRecievedEvent;
+import in.Kaulk.NetLib.util.Events.ErrorEvent;
 
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.net.Socket;
 import java.security.PublicKey;
+import java.util.StringTokenizer;
 
 public class Client {
 
@@ -182,6 +184,15 @@ public class Client {
 
     }
 
+    /**
+     * Directly access the output stream of the client
+     * @return the output stream of the socket
+     * @throws IOException from Socket#getOutputStream
+     * @see Socket#getOutputStream()
+     */
+    public synchronized OutputStream getOutputStream() throws IOException{
+        return s.getOutputStream();
+    }
 
     /**
      * Read whatever bytes are currently in the input stream buffer
@@ -196,7 +207,26 @@ public class Client {
         return new byte[0];
     }
 
+    /**
+     * Used in class HTTPServer
+     * @see in.Kaulk.NetLib.http.HTTPServer
+     * @return the HTTP request recieved
+     */
+    public String readHTTPRequest(){
+        BufferedReader reader = null;
+        PrintWriter writer = null;
+        BufferedOutputStream dataOut = null;
+        String fileRequested = null;
+        try{
+            reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
+            return reader.readLine();
+        }catch (Exception e){
+            parent.feedLoggingEvent(new ErrorEvent(e));
+        }
+        return null;
+
+    }
 
 
 }
