@@ -47,6 +47,7 @@ class ClientAccepter implements Runnable{
                 S.pushClient(newClient);
             }catch (Exception e){
                 e.printStackTrace();
+                S.feedLoggingEvent(new ErrorEvent(e));
             }
 
         }
