@@ -1,23 +1,12 @@
-package com.NetLib.util;
+package in.Kaulk.NetLib.util.Encryption;
 
 
-import com.NetLib.Message;
+import in.Kaulk.NetLib.Message;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.nio.file.Files;
 import java.security.*;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 import javax.crypto.*;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLKeyException;
 
 
 public class EncryptionHandler {

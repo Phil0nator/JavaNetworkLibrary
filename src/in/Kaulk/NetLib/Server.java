@@ -1,19 +1,22 @@
-package com.NetLib;
+package in.Kaulk.NetLib;
 
-import com.NetLib.util.*;
+import in.Kaulk.NetLib.util.Encryption.EncryptionHandler;
+import in.Kaulk.NetLib.util.Encryption.HardcodedKeyPair;
+import in.Kaulk.NetLib.util.Events.ClientConnectEvent;
+import in.Kaulk.NetLib.util.Events.ClientDisconnectEvent;
+import in.Kaulk.NetLib.util.Events.ErrorEvent;
+import in.Kaulk.NetLib.util.Events.Event;
+import in.Kaulk.NetLib.util.Logging.LoggingMode;
+import in.Kaulk.NetLib.util.Logging.ServerLogger;
 
-import javax.net.ServerSocketFactory;
-import javax.net.ssl.SSLServerSocket;
-import javax.net.ssl.SSLServerSocketFactory;
 import java.io.File;
-import java.lang.ref.Cleaner;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 
 /**
  * ClientAccepter implements runnable to run in its own thread, and accept new clients
  * @see Server
  * @see Runnable
+ * @see Server#doToNewClients(ServerAction)
  */
 class ClientAccepter implements Runnable{
     /**
@@ -59,6 +62,13 @@ class ClientAccepter implements Runnable{
  * PerClientActionable also runs in its own thread, and is where
  * the ServerAction a user has defined will run. This is what runs for each
  * Client of the server to handle incoming and outgoing information.
+ *
+ * The ServerAction used is defined in
+ * @see Server#doToEachClient(ServerAction)
+ *
+ *
+ * Also:
+ *
  * @see ServerAction
  * @see Runnable
  */
@@ -94,14 +104,6 @@ class PerClientActionable implements Runnable{
 
     }
 
-}
-
-/**
- * A similar structure to Runnable, with the addition of a Client object parameter
- */
-@FunctionalInterface
-interface ServerAction{
-    public void run(Client c);
 }
 
 
@@ -160,14 +162,15 @@ public final class Server {
 
     /**
      * Asymetric Encryption is done through an EncryptionHandler Object:
-     * @see com.NetLib.util.EncryptionHandler
+     * @see EncryptionHandler
      */
     volatile public EncryptionHandler encryptionHandler;
     volatile public boolean doesEncrypt = false;
     /**
      * Constructor
      * @param port defines the port to which the server's socket will be bound
-     * @param maxClients defines the maximum number of clients that can be connected to the server at one time
+     * @param maxClients defines the maximum number of clients that can be
+     *                   connected to the server at one time
      */
     public Server(int port, int maxClients){
 
@@ -281,12 +284,12 @@ public final class Server {
     }
 
     /**
-     * Define a ServerAction (FunctionalInterface) which will act on each client in a seperate thread
+     * Define a ServerAction (FunctionalInterface) which will act on each client in a separate thread
      * @param a FunctionalInterface
      * @see ServerAction
      * (warning) the action given will be run in a seperate thread for each client
      */
-    void doToEachClient(ServerAction a){
+    public void doToEachClient(ServerAction a){
         perClientAction = a;
         for(Client c : clients){
             if(c!=null)

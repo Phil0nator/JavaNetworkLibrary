@@ -1,10 +1,7 @@
-package com.NetLib.util;
+package in.Kaulk.NetLib.util.Events;
 
-import com.NetLib.Client;
-import com.NetLib.Server;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import in.Kaulk.NetLib.Server;
+import in.Kaulk.NetLib.util.Logging.ServerLogger;
 
 /**
  * Abstract class event is used to provide info to a ServerLogger Object
@@ -26,7 +23,7 @@ public abstract class Event {
     /**
      * The message field is what gets written into the logger
      */
-    protected String message;
+    public String message;
     protected int info;
 
     /**

@@ -1,4 +1,4 @@
-package com.NetLib.util;
+package in.Kaulk.NetLib.util.Events;
 
 public class ErrorEvent extends Event{
 

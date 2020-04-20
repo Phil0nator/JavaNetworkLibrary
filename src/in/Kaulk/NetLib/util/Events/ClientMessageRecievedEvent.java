@@ -1,6 +1,6 @@
-package com.NetLib.util;
+package in.Kaulk.NetLib.util.Events;
 
-import com.NetLib.Client;
+import in.Kaulk.NetLib.Client;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

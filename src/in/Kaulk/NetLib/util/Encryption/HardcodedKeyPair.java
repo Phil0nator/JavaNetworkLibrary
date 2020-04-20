@@ -1,4 +1,4 @@
-package com.NetLib.util;
+package in.Kaulk.NetLib.util.Encryption;
 
 import java.math.BigInteger;
 import java.security.KeyPair;

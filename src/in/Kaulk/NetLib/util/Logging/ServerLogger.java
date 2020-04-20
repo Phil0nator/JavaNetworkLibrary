@@ -1,7 +1,10 @@
-package com.NetLib.util;
+package in.Kaulk.NetLib.util.Logging;
 
 
-import com.NetLib.Server;
+import in.Kaulk.NetLib.Server;
+import in.Kaulk.NetLib.util.Events.ClientMessageRecievedEvent;
+import in.Kaulk.NetLib.util.Events.ErrorEvent;
+import in.Kaulk.NetLib.util.Events.Event;
 
 import java.io.*;
 import java.time.Instant;
@@ -119,7 +122,7 @@ public final class ServerLogger {
          */
         LoggerThread(ServerLogger p)throws IOException{
             parent = p;
-            FileWriter fw = new FileWriter(parent.f);
+            FileWriter fw = new FileWriter(parent.f, true);
             writer = new BufferedWriter(fw);
         }
 

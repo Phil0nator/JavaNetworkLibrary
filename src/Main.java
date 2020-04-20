@@ -1,13 +1,9 @@
-package com.NetLib;
-
-import com.NetLib.util.LoggingMode;
+import in.Kaulk.NetLib.*;
+import in.Kaulk.NetLib.util.Logging.LoggingMode;
 
 import java.io.File;
-import java.io.Serializable;
 
-import static java.lang.System.exit;
-
-class doToClients implements ServerAction{
+class doToClients implements ServerAction {
 
     public void run(Client c){
 

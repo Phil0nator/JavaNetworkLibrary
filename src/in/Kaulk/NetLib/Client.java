@@ -1,15 +1,12 @@
-package com.NetLib;
+package in.Kaulk.NetLib;
 
-import com.NetLib.util.ClientMessageRecievedEvent;
+import in.Kaulk.NetLib.util.Events.ClientMessageRecievedEvent;
 
-import javax.net.ServerSocketFactory;
-import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.net.Socket;
 import java.security.PublicKey;
-import java.time.Instant;
 
 public class Client {
 

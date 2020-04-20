@@ -1,9 +1,8 @@
-import com.NetLib.Client;
-import com.NetLib.Message;
+import com.NetLib.*;
+import in.Kaulk.NetLib.Client;
+import in.Kaulk.NetLib.Message;
 
 import java.util.Scanner;
-
-import static java.lang.System.exit;
 
 public class ClientTest {
 
@@ -27,6 +26,8 @@ public class ClientTest {
             System.out.println("Recieved: "+(String)c.getNextMessage().getObject());
 
         }
+
+
 
 
     }

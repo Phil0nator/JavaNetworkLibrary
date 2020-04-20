@@ -1,6 +1,6 @@
-package com.NetLib;
+package in.Kaulk.NetLib;
 
-import com.NetLib.util.ByteCaster;
+import in.Kaulk.NetLib.util.Serialization.ByteCaster;
 
 import java.io.*;
 
@@ -22,7 +22,8 @@ public final class Message {
     private ByteCaster c = new ByteCaster();
 
     /**
-     * Create a message with a serializable object
+     * Create a message with a serializable object.
+     * To send your own objects, make sure that they implement the Serializable interface
      * @param o a serializable object
      * @see Serializable
      */
@@ -31,7 +32,7 @@ public final class Message {
     }
 
     /**
-     * Create a message based on a byte array
+     * Create a message based on a byte array of data for an object
      * @param b bytes of either a String object or a serializable object
      * @see Serializable
      */
@@ -82,7 +83,7 @@ public final class Message {
      * Debugging method for printing the serialized contents of the message
      * @see ByteCaster#printDataOf(Object)
      */
-    public synchronized void printSerialized(){
+    public void printSerialized(){
         c.printDataOf(this);
     }
 }
