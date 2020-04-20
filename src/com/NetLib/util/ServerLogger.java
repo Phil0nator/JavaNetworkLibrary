@@ -99,16 +99,16 @@ public final class ServerLogger {
          * @see Event
          */
         synchronized void pushEvent(Event e){
-            events[eventCount]=e;
             eventCount++;
+            events[eventCount]=e;
+
         }
 
         /**
-         * Remove event
-         * No data is actually changed, but the stack counter moves down one
-         * So that the next event pushed will overwrite the unused data
+         * Remove top event
          */
         private void pop(){
+            //events[eventCount] = null;
             eventCount--;
         }
 
@@ -142,6 +142,7 @@ public final class ServerLogger {
          * @return if the event is valid
          */
         private boolean getIfValid(Event e){
+            if(e == null)return false;
             LoggingMode lm = parent.getMode();
             if(lm == LoggingMode.off){return false;}
             if (lm == LoggingMode.extra_verbose){
@@ -158,7 +159,7 @@ public final class ServerLogger {
                 }
                 return false;
             }
-            return false;
+            return true;
 
         }
 
@@ -174,6 +175,7 @@ public final class ServerLogger {
                         pop();
                         continue;
                     }
+                    System.out.println(eventCount);
                     String content = events[eventCount].message;
 
                     try{

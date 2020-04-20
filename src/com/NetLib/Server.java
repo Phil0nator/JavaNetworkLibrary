@@ -85,6 +85,7 @@ class PerClientActionable implements Runnable{
                 action.run(client);
             }catch (Exception e){
                 e.printStackTrace();
+                server.feedLoggingEvent(new ErrorEvent(e));
                 client.disconnect();
                 kill();
             }
