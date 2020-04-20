@@ -50,7 +50,7 @@ public final class ServerLogger {
     /**
      * The thread in which logging takes place
      */
-    private volatile LoggerThread thread;
+    public volatile LoggerThread thread;
 
     /**
      * The file in which the logging will be done
@@ -84,6 +84,10 @@ public final class ServerLogger {
      */
     synchronized public void setMode(LoggingMode l){
         this.l=l;
+    }
+
+    public void setNewStackSize(int size){
+        thread.overflowStackTo(size);
     }
 
     /**
@@ -127,7 +131,7 @@ public final class ServerLogger {
         /**
          * Event stack
          */
-        private volatile Event[] events = new Event[MAX_EVENTSTACK_SIZE];
+        public volatile Event[] events = new Event[MAX_EVENTSTACK_SIZE];
         /**
          * Stack tracer
          */
@@ -143,7 +147,7 @@ public final class ServerLogger {
         synchronized void pushEvent(Event e) throws EventstackOverflowException {
 
             eventCount++;
-            if(eventCount > MAX_EVENTSTACK_SIZE){
+            if(eventCount >= events.length){
                 throw new EventstackOverflowException("You have exceeded the maximum number of events in your server logger");
             }
             events[eventCount]=e;
@@ -257,6 +261,18 @@ public final class ServerLogger {
 
             }//end mainloop
         }
+
+        public void overflowStackTo(int newsize){
+            Event[] newevents = new Event[newsize];
+            int i = 0;
+            for(Event e: events){
+                if(e==null)break;
+                newevents[i]=e;
+                i++;
+            }
+            events = newevents;
+        }
+
     }
 
 

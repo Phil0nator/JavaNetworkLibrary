@@ -376,4 +376,17 @@ public final class Server {
         logger.feedNewActionType(e);
     }
 
+    /**
+     * Change the size of the eventstack on the server's logger
+     * (Usually the default 64 events should be more than enough)
+     * @see ServerLogger
+     * @see in.Kaulk.NetLib.util.Events.EventstackOverflowException
+     * @param max new max amount of event objects to be held in a stack for the logger at
+     *            any given time, before they are popped
+     * @see Event
+     */
+    public void setLoggerMaxEventstackSize(int max){
+        logger.setNewStackSize(max);
+    }
+
 }
