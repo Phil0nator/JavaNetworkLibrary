@@ -1,3 +1,7 @@
+///////
+//An example of how to use the in.Kaulk.NetLib client side
+///////
+
 import in.Kaulk.NetLib.*;
 import in.Kaulk.NetLib.Client;
 import in.Kaulk.NetLib.Message;

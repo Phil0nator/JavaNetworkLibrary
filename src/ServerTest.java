@@ -1,3 +1,11 @@
+///////
+//An example of how to use the in.Kaulk.NetLib server side
+///////
+
+
+
+
+
 import in.Kaulk.NetLib.*;
 import in.Kaulk.NetLib.util.Logging.LoggingMode;
 
@@ -28,13 +36,11 @@ class doOnDiscon implements ServerAction{
 
     public void run(Client c){
         System.out.println("Disconnected "+c);
-        //c.killThread();
-
     }
 
 }
 
-public class Main {
+public class ServerTest {
 
     public static void main(String[] args) {
 	// write your code here
