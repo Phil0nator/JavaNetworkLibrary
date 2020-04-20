@@ -1,5 +1,7 @@
 package com.NetLib;
 
+import com.NetLib.util.ClientMessageRecievedEvent;
+
 import javax.net.ServerSocketFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
@@ -153,6 +155,11 @@ public class Client {
             int size = in.readInt();
             if(size<=0)return null;
             Message msg = new Message(in.readNBytes(size));
+
+            if(parent != null) //logging if client is attached to server object
+            parent.feedLoggingEvent(new ClientMessageRecievedEvent(this,size));
+
+
             return msg;
         }catch (Exception e){
             e.printStackTrace();

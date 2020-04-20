@@ -20,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/NetLib/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="37" column="19" lean-forward="true" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+            <state relative-caret-position="214">
+              <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -29,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/NetLib/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="303" column="23" selection-start-line="303" selection-start-column="23" selection-end-line="303" selection-end-column="23" />
+            <state relative-caret-position="367">
+              <caret line="370" column="35" selection-start-line="370" selection-start-column="35" selection-end-line="370" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#ClientAccepter#0" />
@@ -55,75 +55,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/ServerLogger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-54">
-              <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+            <state relative-caret-position="183">
+              <caret line="42" column="23" lean-forward="true" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#LoggerThread#0;class#ServerLogger#0" />
+                <element signature="e#1115#1116#0" expanded="true" />
+                <element signature="e#1139#1140#0" expanded="true" />
+                <element signature="e#1349#1350#0" expanded="true" />
+                <element signature="e#1384#1385#0" expanded="true" />
                 <element signature="method#pushEvent#0;class#LoggerThread#0;class#ServerLogger#0" />
-                <element signature="e#2602#2603#0" expanded="true" />
-                <element signature="e#2638#2639#0" expanded="true" />
                 <element signature="method#LoggerThread#0;class#LoggerThread#0;class#ServerLogger#0" />
                 <element signature="method#delay#0;class#LoggerThread#0;class#ServerLogger#0" />
                 <element signature="method#getIfValid#0;class#LoggerThread#0;class#ServerLogger#0" />
-                <element signature="e#3670#3714#1" />
-                <element signature="e#3650#3794#1" />
                 <element signature="method#run#0;class#LoggerThread#0;class#ServerLogger#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/Event.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-              <folding>
-                <element signature="class#ClientConnectEvent#0" />
-                <element signature="class#ClientDisconnectEvent#0" />
-                <element signature="method#ClientDisconnectEvent#0;class#ClientDisconnectEvent#0" />
-                <element signature="class#ClientMessageRecieved#0" />
-                <element signature="class#ErrorEvent#0" />
-                <element signature="e#1507#1508#0" expanded="true" />
-                <element signature="e#1546#1547#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/NetLib/Client.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-              <folding>
-                <element signature="method#Client#0;class#Client#0" />
-                <element signature="method#Client#1;class#Client#0" />
-                <element signature="method#close#0;class#Client#0" />
-                <element signature="method#killThread#0;class#Client#0" />
-                <element signature="method#startAction#0;class#Client#0" />
-                <element signature="method#send#0;class#Client#0" />
-                <element signature="method#getNextMessage#0;class#Client#0" />
-                <element signature="method#blockUntilNextMessage#0;class#Client#0" />
-                <element signature="method#readCurrentBytes#0;class#Client#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/NetLib/Message.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1647">
-              <caret line="84" column="23" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Message#2;class#Message#0" />
-                <element signature="method#getSerialized#0;class#Message#0" />
               </folding>
             </state>
           </provider>
@@ -133,9 +80,29 @@
         <entry file="file://$PROJECT_DIR$/src/ClientTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="594">
-              <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/NetLib/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="150" column="17" selection-start-line="150" selection-start-column="17" selection-end-line="150" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#Client#0;class#Client#0" />
+                <element signature="method#Client#1;class#Client#0" />
+                <element signature="method#close#0;class#Client#0" />
+                <element signature="method#killThread#0;class#Client#0" />
+                <element signature="method#startAction#0;class#Client#0" />
+                <element signature="method#send#0;class#Client#0" />
+                <element signature="method#blockUntilNextMessage#0;class#Client#0" />
+                <element signature="method#readCurrentBytes#0;class#Client#0" />
               </folding>
             </state>
           </provider>
@@ -146,6 +113,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -159,15 +127,20 @@
         <option value="$PROJECT_DIR$/src/com/NetLib/SocketIUtil.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/ByteCaster.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/util/ByteCaster.java" />
-        <option value="$PROJECT_DIR$/src/com/NetLib/Client.java" />
         <option value="$PROJECT_DIR$/src/ClientTest.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/Message.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/util/HardcodedKeyPair.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/util/EncryptionHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/NetLib/util/LoggingMode.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/Main.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/util/Event.java" />
-        <option value="$PROJECT_DIR$/src/com/NetLib/util/ServerLogger.java" />
+        <option value="$PROJECT_DIR$/src/com/NetLib/util/ClientConnectEvent.java" />
+        <option value="$PROJECT_DIR$/src/com/NetLib/util/ClientDisconnectEvent.java" />
+        <option value="$PROJECT_DIR$/src/com/NetLib/util/ClientMessageRecievedEvent.java" />
+        <option value="$PROJECT_DIR$/src/com/NetLib/util/ErrorEvent.java" />
         <option value="$PROJECT_DIR$/src/com/NetLib/Server.java" />
+        <option value="$PROJECT_DIR$/src/com/NetLib/Client.java" />
+        <option value="$PROJECT_DIR$/src/com/NetLib/util/ServerLogger.java" />
       </list>
     </option>
   </component>
@@ -182,7 +155,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -216,6 +188,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -260,8 +233,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ClientTest" />
       </list>
     </recent_temporary>
   </component>
@@ -280,9 +253,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4993046" visible="true" weight="0.2553305" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4993046" visible="true" weight="0.25799572" />
       <window_info id="Structure" order="1" sideWeight="0.5006954" side_tool="true" weight="0.25266525" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -291,13 +263,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.032502707" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.27302274" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.33586133" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.07258938" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -315,19 +287,6 @@
     <SUITE FILE_PATH="coverage/JavaNetworkLibrary$ClientTest.ic" NAME="ClientTest Coverage Results" MODIFIED="1587345047740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/NetLib/SocketIUtil.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/NetLib/ByteCaster.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/io/BufferedInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="187" column="38" selection-start-line="187" selection-start-column="38" selection-end-line="187" selection-end-column="38" />
-          <folding>
-            <element signature="e#6101#6102#0" expanded="true" />
-            <element signature="e#6146#6147#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/io/ObjectOutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
@@ -599,16 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/EncryptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="47" column="32" lean-forward="true" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/HardcodedKeyPair.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
@@ -631,26 +580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NetLib/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="37" column="19" lean-forward="true" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClientTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/NetLib/Message.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1647">
@@ -665,62 +594,73 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="class#ClientConnectEvent#0" />
-            <element signature="class#ClientDisconnectEvent#0" />
-            <element signature="method#ClientDisconnectEvent#0;class#ClientDisconnectEvent#0" />
-            <element signature="class#ClientMessageRecieved#0" />
-            <element signature="class#ErrorEvent#0" />
-            <element signature="e#1507#1508#0" expanded="true" />
-            <element signature="e#1546#1547#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NetLib/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          <folding>
-            <element signature="method#Client#0;class#Client#0" />
-            <element signature="method#Client#1;class#Client#0" />
-            <element signature="method#close#0;class#Client#0" />
-            <element signature="method#killThread#0;class#Client#0" />
-            <element signature="method#startAction#0;class#Client#0" />
-            <element signature="method#send#0;class#Client#0" />
-            <element signature="method#getNextMessage#0;class#Client#0" />
-            <element signature="method#blockUntilNextMessage#0;class#Client#0" />
-            <element signature="method#readCurrentBytes#0;class#Client#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/ServerLogger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        <state relative-caret-position="513">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#LoggerThread#0;class#ServerLogger#0" />
-            <element signature="method#pushEvent#0;class#LoggerThread#0;class#ServerLogger#0" />
-            <element signature="e#2602#2603#0" expanded="true" />
-            <element signature="e#2638#2639#0" expanded="true" />
-            <element signature="method#LoggerThread#0;class#LoggerThread#0;class#ServerLogger#0" />
-            <element signature="method#delay#0;class#LoggerThread#0;class#ServerLogger#0" />
-            <element signature="method#getIfValid#0;class#LoggerThread#0;class#ServerLogger#0" />
-            <element signature="e#3670#3714#1" />
-            <element signature="e#3650#3794#1" />
-            <element signature="method#run#0;class#LoggerThread#0;class#ServerLogger#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/LoggingMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/ClientConnectEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="12" column="4" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/ClientMessageRecievedEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/EncryptionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1077">
+          <caret line="47" column="32" lean-forward="true" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/ClientDisconnectEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/ErrorEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClientTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/NetLib/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="303" column="23" selection-start-line="303" selection-start-column="23" selection-end-line="303" selection-end-column="23" />
+        <state relative-caret-position="367">
+          <caret line="370" column="35" selection-start-line="370" selection-start-column="35" selection-end-line="370" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#ClientAccepter#0" />
@@ -737,6 +677,53 @@
             <element signature="method#startAcceptingClients#0;class#Server#0" />
             <element signature="method#doToEachClient#0;class#Server#0" />
             <element signature="method#sendToAll#0;class#Server#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="150" column="17" selection-start-line="150" selection-start-column="17" selection-end-line="150" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Client#0;class#Client#0" />
+            <element signature="method#Client#1;class#Client#0" />
+            <element signature="method#close#0;class#Client#0" />
+            <element signature="method#killThread#0;class#Client#0" />
+            <element signature="method#startAction#0;class#Client#0" />
+            <element signature="method#send#0;class#Client#0" />
+            <element signature="method#blockUntilNextMessage#0;class#Client#0" />
+            <element signature="method#readCurrentBytes#0;class#Client#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NetLib/util/ServerLogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="42" column="23" lean-forward="true" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1115#1116#0" expanded="true" />
+            <element signature="e#1139#1140#0" expanded="true" />
+            <element signature="e#1349#1350#0" expanded="true" />
+            <element signature="e#1384#1385#0" expanded="true" />
+            <element signature="method#pushEvent#0;class#LoggerThread#0;class#ServerLogger#0" />
+            <element signature="method#LoggerThread#0;class#LoggerThread#0;class#ServerLogger#0" />
+            <element signature="method#delay#0;class#LoggerThread#0;class#ServerLogger#0" />
+            <element signature="method#getIfValid#0;class#LoggerThread#0;class#ServerLogger#0" />
+            <element signature="method#run#0;class#LoggerThread#0;class#ServerLogger#0" />
           </folding>
         </state>
       </provider>

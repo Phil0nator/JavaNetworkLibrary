@@ -1,5 +1,8 @@
 package com.NetLib;
 
+import com.NetLib.util.LoggingMode;
+
+import java.io.File;
 import java.io.Serializable;
 
 import static java.lang.System.exit;
@@ -43,6 +46,7 @@ public class Main {
     server.doToEachClient(new doToClients());
     server.doToNewClients(new doOnJoin());
     server.doOnDisconnect(new doOnDiscon());
+    server.setupLogger(new File("testlog.txt"), LoggingMode.extra_verbose);
     server.startAcceptingClients();
     System.out.println("Ready to accept");
 

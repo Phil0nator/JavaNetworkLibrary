@@ -6,35 +6,6 @@ import com.NetLib.Server;
 import java.io.*;
 import java.time.Instant;
 
-enum LoggingMode{
-    /**
-     * No logging
-     */
-    off,
-    /**
-     * Only records information about fatal errors
-     */
-    fatal,
-
-    /**
-     *Records information about any errors,
-     *And information about each client that connects and disconnects,
-     */
-    verbose,
-    /**
-     * Records information about any errors,
-     * And information about each client that connects and disconnects,
-     * And also records the timestamp and size of each message relayed
-     * (Can create very large files)
-     */
-    extra_verbose,
-    /**
-     * Includes information of extra_verbose, with the addition of incremental information about
-     * CPU and RAM usage
-     */
-    debugger
-
-}
 
 
 
@@ -75,6 +46,14 @@ public final class ServerLogger {
         this.s=s;
         this.l=l;
         f=file;
+        if(file == null){return;}
+        try{
+            thread = new LoggerThread(this);
+            Thread t = new Thread(thread);
+            t.start();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -93,8 +72,8 @@ public final class ServerLogger {
 
 
 
-    synchronized public void feedNewActionType(){
-
+    synchronized public void feedNewActionType(Event e){
+        thread.pushEvent(e);
     }
 
 
@@ -158,6 +137,7 @@ public final class ServerLogger {
 
         /**
          * determines if an event is needed based on logging level
+         * This is done in this thread to avoid slowing down any server threads
          * @param e event
          * @return if the event is valid
          */

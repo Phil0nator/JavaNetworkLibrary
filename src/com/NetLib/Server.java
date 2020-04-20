@@ -1,11 +1,11 @@
 package com.NetLib;
 
-import com.NetLib.util.EncryptionHandler;
-import com.NetLib.util.HardcodedKeyPair;
+import com.NetLib.util.*;
 
 import javax.net.ServerSocketFactory;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
+import java.io.File;
 import java.lang.ref.Cleaner;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -114,7 +114,7 @@ enum EncryptionLevel{
 /**
  * The container and handler for multiple clients
  */
-public class Server {
+public final class Server {
     /**
      * Currently connected clients
      * Note: Will not always be full, and will be allocated with null references
@@ -148,6 +148,13 @@ public class Server {
     volatile private ServerAction perClientAction;
     volatile private ServerAction onDisconnect;
 
+
+    /**
+     *Logger object, configurable by user
+     * @see ServerLogger
+     * @see LoggingMode
+     */
+    volatile private ServerLogger logger = new ServerLogger(this, null, LoggingMode.off);
 
     /**
      * Asymetric Encryption is done through an EncryptionHandler Object:
@@ -204,6 +211,7 @@ public class Server {
         if(perClientAction != null){
             c.startAction(new PerClientActionable(this, c, perClientAction));
         }
+        logger.feedNewActionType(new ClientConnectEvent(c));
     }
 
     /**
@@ -223,6 +231,7 @@ public class Server {
         c.killThread();
         c.close();
         onDisconnect.run(c);
+        logger.feedNewActionType(new ClientDisconnectEvent(c));
         c = null;
         clients=newClients;
     }
@@ -313,8 +322,53 @@ public class Server {
         return clientCount;
     }
 
+
     /**
-     * @TODO SETUP METHOD FOR SERVERLOGGER
+     * Setup a logger for the server
+     * Args are passed to ServerLogger constructor
+     * @param file destination of logs
+     * @param lm logging mode
+     * @see LoggingMode
+     * @see ServerLogger
+     * @see Server#logger
      */
+    public void setupLogger(File file, LoggingMode lm){
+        logger = new ServerLogger(this, file, lm);
+    }
+
+    /**
+     * Change the logging mode of a logger
+     * Args passed to ServerLogger#setMode(LoggingMode l)
+     * @param lm new LoggingMode
+     * @see LoggingMode
+     * @see ServerLogger
+     * @see Server#logger
+     */
+    synchronized public void setLoggingMode(LoggingMode lm){
+        logger.setMode(lm);
+    }
+
+    /**
+     * Accessor for the logging mode of the server
+     * @return logging mode
+     * @see ServerLogger
+     * @see LoggingMode
+     * @see Server#logger
+     */
+    synchronized public LoggingMode getLoggingMode(){
+        return logger.getMode();
+    }
+
+    /**
+     * Used to pass events to the logger
+     * To create your own event types, create a class that extends Event
+     * (The message instance variable is what ends up being written into the log file)
+     * @see Event
+     * @see ServerLogger
+     * @param e new event type
+     */
+    synchronized public void feedLoggingEvent(Event e){
+        logger.feedNewActionType(e);
+    }
 
 }
