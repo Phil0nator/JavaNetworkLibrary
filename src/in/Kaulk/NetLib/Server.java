@@ -373,6 +373,7 @@ public final class Server {
      * @param e new event type
      */
     synchronized public void feedLoggingEvent(Event e){
+        if(e==null)return; //prevent nullpointerexception in logger
         logger.feedNewActionType(e);
     }
 

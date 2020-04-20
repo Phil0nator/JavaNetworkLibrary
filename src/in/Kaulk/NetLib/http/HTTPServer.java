@@ -5,6 +5,7 @@ import in.Kaulk.NetLib.Client;
 import in.Kaulk.NetLib.Server;
 import in.Kaulk.NetLib.ServerAction;
 import in.Kaulk.NetLib.util.Events.ErrorEvent;
+import in.Kaulk.NetLib.util.Logging.LoggingMode;
 
 import java.io.*;
 import java.util.Date;
@@ -41,20 +42,23 @@ class DefaultNonExceptableMethodResponse implements HTTPResopnse{
 
 public class HTTPServer {
 
-    private Server subServer;
+    public Server subServer;
 
     private String rootPath;
 
 
-    HTTPResopnse otherMethods = new DefaultNonExceptableMethodResponse();
+    private HTTPResopnse otherMethods = new DefaultNonExceptableMethodResponse();
 
-    HTTPServer(int port, int maxClients, String rootPath){
+    public HTTPServer(int port, int maxClients, String rootPath){
         this.rootPath = rootPath;
         subServer = new Server(port,maxClients);
-
+        subServer.setupLogger(null,LoggingMode.off);
     }
 
-
+    public void startup(){
+        subServer.startAcceptingClients();
+        subServer.doToEachClient(new HandleNormalRequests(this));
+    }
 
 
 
@@ -151,6 +155,8 @@ public class HTTPServer {
                 parent.subServer.feedLoggingEvent(new ErrorEvent(e));
             }
         }
+
+
 
 
     }
