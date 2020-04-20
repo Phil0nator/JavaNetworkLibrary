@@ -11,6 +11,7 @@ class doToClients implements ServerAction{
         Message msg = c.getNextMessage();
         if(msg!=null) {
             String s = (String) msg.getObject();
+            System.out.println("Recieved: "+s);
             s+=" THE SERVER ADDED THIS";
             c.send(new Message(s));
         }

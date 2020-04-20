@@ -105,7 +105,7 @@ interface ServerAction{
 
 enum EncryptionLevel{
 
-    RSA_1024, RSA_64, RSA_128, RSA_256, RSA_512
+    RSA_1024, RSA_2048
 
 }
 
@@ -117,19 +117,24 @@ enum EncryptionLevel{
 public class Server {
     /**
      * Currently connected clients
+     * Note: Will not always be full, and will be allocated with null references
+     *       Up to the size specified by the user in the constructor
+     * @see Server#Server(int, int)
      */
-    volatile Client[] clients;
+    volatile private Client[] clients;
     /**
+     * ServerSocket to generate new clients
      * @see ServerSocket
      */
     volatile ServerSocket serverSocket;
     /**
      * The newest client to be added
      */
-    volatile Client newestClient;
+    volatile private Client newestClient;
 
     volatile private int clientCount = 0;
     /**
+     * ClientAccepter object
      * @see ClientAccepter
      */
     volatile private ClientAccepter ca = null;
@@ -155,7 +160,7 @@ public class Server {
      * @param port defines the port to which the server's socket will be bound
      * @param maxClients defines the maximum number of clients that can be connected to the server at one time
      */
-    Server(int port, int maxClients){
+    public Server(int port, int maxClients){
 
         clients = new Client[maxClients];
         try {
@@ -172,7 +177,7 @@ public class Server {
      * @param port port to bind to
      * @param maxClients maximum number of clients to connect at one time
      */
-    Server(int port, int maxClients, HardcodedKeyPair hardcoded){
+    public Server(int port, int maxClients, HardcodedKeyPair hardcoded){
         this(port,maxClients);
 
         doesEncrypt=true;
@@ -287,6 +292,25 @@ public class Server {
         for(Client c: clients){
             c.send(m);
         }
+    }
+
+    /**
+     * Thread safe method for getting the current list of clients
+     * Note: Since clients may be added or removed after the array is returned,
+     *       It is possible that some of the contents of the array may become unsafe references
+     * @return the currently connected clients
+     * @see Server#remove(Client c)
+     */
+    synchronized public Client[] getClients(){
+        return clients;
+    }
+
+    /**
+     * Accessor for the current number of connected clients
+     * @return number of connected clients
+     */
+    synchronized public int getClientAmount(){
+        return clientCount;
     }
 
 }
