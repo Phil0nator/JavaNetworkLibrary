@@ -13,7 +13,11 @@ import java.util.Date;
 import java.util.StringTokenizer;
 
 
-
+/**
+ * Default HTTPResponse for unknown methods (not GET or HEAD)
+ * @see HTTPResopnse
+ * @see HTTPServer#overrrideHTTPResponse(HTTPResopnse)  to make your own
+ */
 class DefaultNonExceptableMethodResponse implements HTTPResopnse{
 
     private String methodNotSupportedResponse = "<p>HTTP Method not supported </p>";
@@ -122,6 +126,11 @@ public class HTTPServer {
             this.parent=parent;
         }
 
+        /**
+         * Get the type of document being requested
+         * @param s message from client
+         * @return doctype
+         */
         private String getContentType(String s){
             if(s.endsWith(".htm") || s.endsWith(".html")){
                 return "text/html";
@@ -131,6 +140,13 @@ public class HTTPServer {
             return "text/plain";
         }
 
+        /**
+         * Extract byte array from file
+         * @param file file to be read
+         * @param len length to be read
+         * @return byte array of file contents
+         * @throws IOException during file reading
+         */
         private byte[] readFileData(File file, int len) throws IOException {
             FileInputStream fileInputStream = null;
             byte[] fileData = new byte[len];
