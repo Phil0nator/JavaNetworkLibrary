@@ -125,7 +125,7 @@ public class HTTPServer {
             if(s.endsWith(".htm") || s.endsWith(".html")){
                 return "text/html";
             }else if (s.endsWith(".css")){
-                return "stylesheet";
+                return "text/css";
             }
             return "text/plain";
         }
