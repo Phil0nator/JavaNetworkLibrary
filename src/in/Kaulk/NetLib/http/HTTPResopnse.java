@@ -9,7 +9,16 @@ import in.Kaulk.NetLib.Client;
  */
 @FunctionalInterface
 public interface HTTPResopnse {
-
+    /**
+     * Put your main content here
+     *
+     * Example implementation for GET and HEAD requests:
+     * @see HTTPServer.HandleNormalRequests#run(Client)
+     *
+     * @param c Client object to send and receive data
+     * @param msg the direct request from the client
+     *
+     */
     public void run(Client c, String msg);
 
 }

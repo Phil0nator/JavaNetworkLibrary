@@ -11,6 +11,8 @@ import java.io.*;
 import java.util.Date;
 import java.util.StringTokenizer;
 
+
+
 class DefaultNonExceptableMethodResponse implements HTTPResopnse{
 
     private String methodNotSupportedResponse = "<p>HTTP Method not supported </p>";
@@ -39,30 +41,81 @@ class DefaultNonExceptableMethodResponse implements HTTPResopnse{
     }
 }
 
-
+/**
+ * A contained class for a standard HTTP Server
+ * (Does not support HTTPS)
+ * Note: To support HTTP functions other that GET and HEAD, you will need to implement your own HTTPResponse
+ * Type.
+ * @see HTTPResopnse
+ * Default example:
+ * @see DefaultNonExceptableMethodResponse
+ * Method:
+ * @see HTTPServer#overrrideHTTPResponse(HTTPResopnse)
+ */
 public class HTTPServer {
 
+    /**
+     * Server object for lower level client interaction.
+     * The server's scope is public so that you may use any method
+     * you normally could for a server object
+     * @see Server
+     */
     public Server subServer;
 
+    /**
+     * The root directory of html/server files
+     */
     private String rootPath;
 
-
+    /**
+     * The default response for methods other than GET or HEAD
+     * @see HTTPResopnse
+     * @see DefaultNonExceptableMethodResponse
+     */
     private HTTPResopnse otherMethods = new DefaultNonExceptableMethodResponse();
 
+    /**
+     * Constructor
+     * @param port port to bind to
+     * @param maxClients maximum number of clients at one time
+     * @param rootPath root director of server files
+     * @see Server#Server(int, int)
+     * @see Server#setupLogger(File, LoggingMode)
+     */
     public HTTPServer(int port, int maxClients, String rootPath){
         this.rootPath = rootPath;
         subServer = new Server(port,maxClients);
-        subServer.setupLogger(null,LoggingMode.off);
+        subServer.setupLogger(new File("log.txt"),LoggingMode.off);
     }
 
+    /**
+     * Initiate the server, once all other properties have been set up
+     * @see Server
+     */
     public void startup(){
         subServer.startAcceptingClients();
         subServer.doToEachClient(new HandleNormalRequests(this));
+
+
     }
 
+    /**
+     * Used to override the HTTP response for methods other than GET or HEAD
+     * @param n new HTTPResponse object
+     * @see HTTPResopnse
+     * @see HTTPServer#otherMethods
+     */
+    public void overrrideHTTPResponse(HTTPResopnse n){
+        if(n==null)return;
+        otherMethods = n;
+    }
 
-
-    private class HandleNormalRequests implements ServerAction{
+    /**
+     * Subclass ServerAction for the subServer object to act with
+     * @see ServerAction
+     * @see Server#doToEachClient(ServerAction)
+     */
+    final class HandleNormalRequests implements ServerAction{
         HTTPServer parent;
         public HandleNormalRequests(HTTPServer parent){
             this.parent=parent;
@@ -71,6 +124,8 @@ public class HTTPServer {
         private String getContentType(String s){
             if(s.endsWith(".htm") || s.endsWith(".html")){
                 return "text/html";
+            }else if (s.endsWith(".css")){
+                return "stylesheet";
             }
             return "text/plain";
         }
@@ -90,6 +145,10 @@ public class HTTPServer {
             return fileData;
         }
 
+        /**
+         * Main content
+         * @param c relevant Client object
+         */
         public void run(Client c) {
 
             try {

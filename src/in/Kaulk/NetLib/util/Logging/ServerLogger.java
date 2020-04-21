@@ -107,6 +107,8 @@ public final class ServerLogger {
      * @see Server#feedLoggingEvent(Event)
      */
     synchronized public void feedNewActionType(Event e){
+        if(e==null)return;
+        if(l == LoggingMode.off)return;
         thread.pushEvent(e);
     }
 
