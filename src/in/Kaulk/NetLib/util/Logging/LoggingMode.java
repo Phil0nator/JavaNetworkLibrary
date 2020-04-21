@@ -26,7 +26,16 @@ public enum LoggingMode {
      * Includes information of extra_verbose, with the addition of incremental information about
      * CPU and RAM usage
      */
-    debugger
+    debugger,
+
+    /**
+     * Includes standard HTTP request information:
+     *      IP
+     *      Request
+     *      Time
+     *      Response Code
+     */
+    HTTP_Standard
 
 }
 

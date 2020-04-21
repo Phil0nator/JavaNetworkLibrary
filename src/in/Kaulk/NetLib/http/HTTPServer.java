@@ -5,6 +5,7 @@ import in.Kaulk.NetLib.Client;
 import in.Kaulk.NetLib.Server;
 import in.Kaulk.NetLib.ServerAction;
 import in.Kaulk.NetLib.util.Events.ErrorEvent;
+import in.Kaulk.NetLib.util.Events.HTTPRequestEvent;
 import in.Kaulk.NetLib.util.Logging.LoggingMode;
 
 import java.io.*;
@@ -85,7 +86,7 @@ public class HTTPServer {
     public HTTPServer(int port, int maxClients, String rootPath){
         this.rootPath = rootPath;
         subServer = new Server(port,maxClients);
-        subServer.setupLogger(new File("log.txt"),LoggingMode.off);
+        subServer.setupLogger(new File("log.txt"),LoggingMode.HTTP_Standard);
     }
 
     /**
@@ -150,9 +151,9 @@ public class HTTPServer {
          * @param c relevant Client object
          */
         public void run(Client c) {
+            String msg = c.readHTTPRequest();
 
             try {
-                String msg = c.readHTTPRequest();
                 PrintWriter writer = new PrintWriter(c.getOutputStream());
                 BufferedOutputStream dataOut = new BufferedOutputStream(c.getOutputStream());
                 if (msg != null) {
@@ -190,6 +191,9 @@ public class HTTPServer {
 
                             dataOut.write(fileData, 0, fileLength);
                             dataOut.flush();
+
+                            parent.subServer.feedLoggingEvent(new HTTPRequestEvent(c,msg,200));//logging
+
                         }
 
 
@@ -207,6 +211,7 @@ public class HTTPServer {
                     writer.println("Content-length: " + "0");
                     writer.println(); // blank line between headers and content, very important !
                     writer.flush(); // flush character output stream buffer
+                    parent.subServer.feedLoggingEvent(new HTTPRequestEvent(c,msg,404));
                 }catch (Exception e){
                     parent.subServer.feedLoggingEvent(new ErrorEvent(e));
                 }

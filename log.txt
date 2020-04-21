@@ -1,0 +1,64 @@
+Client /127.0.0.1:30417 Connected at 2020/04/20 17:29:26
+Client /0:0:0:0:0:0:0:1:30416 Connected at 2020/04/20 17:29:26
+Client /0:0:0:0:0:0:0:1:30415 Connected at 2020/04/20 17:29:26
+Client /127.0.0.1:30413 Connected at 2020/04/20 17:29:26
+Client /127.0.0.1:30412 Connected at 2020/04/20 17:29:26
+Client /0:0:0:0:0:0:0:1:30411 Connected at 2020/04/20 17:29:26
+Got request: GET /uikit/js/uikit-icons.min.js HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30439 at Mon Apr 20 17:33:37 PDT 2020.  CODE: 200 was given
+
+Got request: GET /styles.css HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30435 at Mon Apr 20 17:33:37 PDT 2020.  CODE: 200 was given
+
+Client /0:0:0:0:0:0:0:1:30439 Connected at 2020/04/20 17:33:37
+Client /0:0:0:0:0:0:0:1:30436 Connected at 2020/04/20 17:33:37
+Client /0:0:0:0:0:0:0:1:30435 Connected at 2020/04/20 17:33:37
+Got request: GET / HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30433 at Mon Apr 20 17:33:37 PDT 2020.  CODE: 200 was given
+
+Client /0:0:0:0:0:0:0:1:30433 Connected at 2020/04/20 17:33:37
+Got request: GET /uikit/js/uikit.min.js HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30436 at Mon Apr 20 17:33:38 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/headerConsoleBlurr.gif HTTP/1.1 } from client: /127.0.0.1:30440 at Mon Apr 20 17:33:38 PDT 2020.  CODE: 200 was given
+
+Client /127.0.0.1:30441 Connected at 2020/04/20 17:33:38
+Client /127.0.0.1:30440 Connected at 2020/04/20 17:33:38
+Got request: GET /uikit/css/uikit.min.css HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30433 at Mon Apr 20 17:33:38 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/mdg.png HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30435 at Mon Apr 20 17:33:39 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/uil.png HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30439 at Mon Apr 20 17:33:39 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/msg.png HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30433 at Mon Apr 20 17:33:39 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/apf.png HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30436 at Mon Apr 20 17:33:39 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/cgl.png HTTP/1.1 } from client: /127.0.0.1:30440 at Mon Apr 20 17:33:43 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/icon.ico HTTP/1.1 } from client: /127.0.0.1:30441 at Mon Apr 20 17:33:47 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/ps.png HTTP/1.1 } from client: /127.0.0.1:30441 at Mon Apr 20 17:33:47 PDT 2020.  CODE: 200 was given
+
+Got request: GET / HTTP/1.1 } from client: /127.0.0.1:30441 at Mon Apr 20 17:34:41 PDT 2020.  CODE: 200 was given
+
+Got request: GET /uikit/js/uikit.min.js HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30433 at Mon Apr 20 17:34:42 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/uil.png HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30439 at Mon Apr 20 17:34:42 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/msg.png HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30436 at Mon Apr 20 17:34:42 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/apf.png HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30436 at Mon Apr 20 17:34:42 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/mdg.png HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30439 at Mon Apr 20 17:34:42 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/cgl.png HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30436 at Mon Apr 20 17:34:42 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/ps.png HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30436 at Mon Apr 20 17:34:42 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/headerConsoleBlurr.gif HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30435 at Mon Apr 20 17:34:42 PDT 2020.  CODE: 200 was given
+
+Got request: GET /uikit/js/uikit-icons.min.js HTTP/1.1 } from client: /0:0:0:0:0:0:0:1:30439 at Mon Apr 20 17:34:42 PDT 2020.  CODE: 200 was given
+
+Got request: GET /styles.css HTTP/1.1 } from client: /127.0.0.1:30440 at Mon Apr 20 17:34:42 PDT 2020.  CODE: 200 was given
+
+Got request: GET /uikit/css/uikit.min.css HTTP/1.1 } from client: /127.0.0.1:30441 at Mon Apr 20 17:34:45 PDT 2020.  CODE: 200 was given
+
+Got request: GET /images/icon.ico HTTP/1.1 } from client: /127.0.0.1:30441 at Mon Apr 20 17:34:51 PDT 2020.  CODE: 200 was given
+

@@ -3,10 +3,7 @@ package in.Kaulk.NetLib.util.Logging;
 
 import com.sun.management.OperatingSystemMXBean;
 import in.Kaulk.NetLib.Server;
-import in.Kaulk.NetLib.util.Events.ClientMessageRecievedEvent;
-import in.Kaulk.NetLib.util.Events.ErrorEvent;
-import in.Kaulk.NetLib.util.Events.Event;
-import in.Kaulk.NetLib.util.Events.EventstackOverflowException;
+import in.Kaulk.NetLib.util.Events.*;
 
 import java.io.*;
 import java.lang.management.ManagementFactory;
@@ -200,6 +197,9 @@ public final class ServerLogger {
             if (lm == LoggingMode.extra_verbose){
                 return true;
             }
+            if(lm == LoggingMode.HTTP_Standard && e instanceof HTTPRequestEvent){
+                return true;
+            }
             if(lm == LoggingMode.fatal){
                 if(!(e instanceof ErrorEvent)){
                     return false;
@@ -211,7 +211,7 @@ public final class ServerLogger {
                 }
                 return false;
             }
-            return true;
+            return true; //true by default
 
         }
 
