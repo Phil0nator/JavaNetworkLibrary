@@ -62,7 +62,7 @@ public final class Message {
      * Gets the byte form of the message in order to send through sockets
      * @return byte array of serialized data
      * @see Serializable
-     * @throws NotSerializableException
+     * @throws NotSerializableException when an object given is not serializable
      */
     public byte[] getSerialized() throws NotSerializableException{
         if(obj instanceof Serializable) {

@@ -59,6 +59,7 @@ public final class ServerLogger {
      * Constructor
      * @param s parent object
      * @param l Logging level
+     * @param file the destination for logging
      * @see LoggingMode
      */
     public ServerLogger(Server s,File file ,LoggingMode l){
@@ -112,10 +113,16 @@ public final class ServerLogger {
 
     /**
      * Get System Info:
+     * @return overall system cpu load %
      */
     private double getSystemLoad(){
         return os.getSystemLoadAverage();
     }
+
+    /**
+     * Ram info
+     * @return the amount of memory the jvm is using
+     */
     private double getRamInUse() {
         return Runtime.getRuntime().freeMemory()-Runtime.getRuntime().totalMemory();
     }

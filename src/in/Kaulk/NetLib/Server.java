@@ -188,6 +188,8 @@ public final class Server {
      * Secondary Constructor for encryption
      * @param port port to bind to
      * @param maxClients maximum number of clients to connect at one time
+     * @param hardcoded the hardcoded public key
+     * @deprecated (not working yet)
      */
     public Server(int port, int maxClients, HardcodedKeyPair hardcoded){
         this(port,maxClients);
